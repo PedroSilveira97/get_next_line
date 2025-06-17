@@ -6,7 +6,7 @@
 /*   By: ptavares <ptavares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 13:26:18 by ptavares          #+#    #+#             */
-/*   Updated: 2025/06/04 13:19:57 by ptavares         ###   ########.fr       */
+/*   Updated: 2025/06/04 14:20:24 by ptavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ static char	*update_remainder(char *remainder)
 	char	*new_remainder;
 
 	i = 0;
+	if (!remainder)
+		return (NULL);
 	while (remainder[i] && remainder[i] != '\n')
 		i++;
 	if (!remainder[i])
@@ -67,6 +69,7 @@ char	*get_next_line(int fd)
 {
 	static char	*leftover;
 	char		*line;
+	char		*aux;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
@@ -74,6 +77,17 @@ char	*get_next_line(int fd)
 	if (!leftover)
 		return (NULL);
 	line = ft_get_line(leftover);
-	leftover = update_remainder(leftover);
+	if (!line || line[0] == '\0')
+	{
+		free(line);
+		free(leftover);
+		leftover = NULL;
+		return (NULL);
+	}
+	aux = update_remainder(leftover);
+	if (!aux)
+		leftover = NULL;
+	else
+		leftover = aux;
 	return (line);
 }
