@@ -6,7 +6,7 @@
 /*   By: ptavares <ptavares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 14:31:20 by ptavares          #+#    #+#             */
-/*   Updated: 2025/06/26 22:38:02 by ptavares         ###   ########.fr       */
+/*   Updated: 2025/06/27 14:31:58 by ptavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,10 @@ char	*ft_substr(char *str, size_t ii, size_t fi)
 		return (NULL);
 	i = 0;
 	while (ii + i <= fi && str[ii + i])
-		substr[i] = str[ii + i++];
+	{
+		substr[i] = str[ii + i];
+		i++;
+	}
 	substr[i] = '\0';
 	return (substr);
 }

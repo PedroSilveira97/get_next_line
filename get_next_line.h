@@ -6,7 +6,7 @@
 /*   By: ptavares <ptavares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 13:41:25 by ptavares          #+#    #+#             */
-/*   Updated: 2025/06/27 13:29:13 by ptavares         ###   ########.fr       */
+/*   Updated: 2025/06/27 14:37:14 by ptavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@
 #  define BUFFER_SIZE 10000
 # endif
 
-size_t		ft_strlen(char *str);
-char		*ft_strchr(char *str, size_t c);
-char		*ft_strjoin(char *s1, char *s2);
-char		*ft_substr(char *str, ssize_t ii, size_t fi);
-char		*get_next_line(int fd);
-static char	*extract_line(char **sth);
-static char	*read_to_stash(int fd, char *stash);
-static char	*ft_free_all(char *s1, char *s2);
+size_t	ft_strlen(char *str);
+char	*ft_strchr(char *str, size_t c);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_substr(char *str, size_t ii, size_t fi);
+char	*get_next_line(int fd);
+char	*extract_line(char **sth);
+char	*read_to_stash(int fd, char *stash);
+char	*ft_free_all(char *s1, char *s2);
 
 #endif
