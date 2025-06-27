@@ -6,7 +6,7 @@
 /*   By: ptavares <ptavares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 14:31:01 by ptavares          #+#    #+#             */
-/*   Updated: 2025/06/27 14:46:30 by ptavares         ###   ########.fr       */
+/*   Updated: 2025/06/27 15:23:43 by ptavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,7 @@ char	*extract_line(char **sth)
 	{
 		line = ft_substr(*sth, 0, nw - *sth);
 		free(*sth);
-		*sth = aux;
-		if (*sth && **sth == '\0')
-		{
-			free(*sth);
-			return (NULL);
-		}
+		return (NULL);
 	}
 	else
 	{

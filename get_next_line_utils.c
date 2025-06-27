@@ -6,11 +6,28 @@
 /*   By: ptavares <ptavares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 14:31:20 by ptavares          #+#    #+#             */
-/*   Updated: 2025/06/27 14:31:58 by ptavares         ###   ########.fr       */
+/*   Updated: 2025/06/27 15:13:23 by ptavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+void	remainder(char *buf)
+{
+	ssize_t	i;
+	ssize_t	j;
+
+	i = 0;
+	j = 0;
+	while (buf[i] && buf[i] != '\n')
+		i++;
+	if (buf[i] == '\n')
+		i++;
+	while (buf[i])
+		buf[j++] = buf[i++];
+	while (j < BUFFER_SIZE + 1)
+		buf[j++] = '\0';
+}
 
 size_t	ft_strlen(char *str)
 {
@@ -62,29 +79,4 @@ char	*ft_strjoin(char *s1, char *s2)
 		s3[k++] = *s2++;
 	s3[k] = '\0';
 	return (s3);
-}
-
-char	*ft_substr(char *str, size_t ii, size_t fi)
-{
-	char	*substr;
-	size_t	i;
-
-	if (!str)
-		return (malloc(1));
-	i = ft_strlen(str);
-	if (ii > fi || ii >= i)
-		return (malloc(1));
-	if (fi >= i)
-		fi = i - 1;
-	substr = malloc((fi - ii + 2) * sizeof (char));
-	if (!substr)
-		return (NULL);
-	i = 0;
-	while (ii + i <= fi && str[ii + i])
-	{
-		substr[i] = str[ii + i];
-		i++;
-	}
-	substr[i] = '\0';
-	return (substr);
 }
